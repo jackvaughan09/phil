@@ -14,36 +14,10 @@ def table_from_txt(udir):
     frame = pd.DataFrame()
     for f in os.listdir(udir):
         if f[f.find('.')+1:] == 'txt':
-            contents = []
-            with open(os.path.join(udir,f),'r') as fobj:
-                contents = fobj.read().splitlines()
-            prev_row = 0
-            row = 0
-            row_list = []
-            matrix = []
-            col = 0
-            cell = ''
-            for line in contents:
-                print(line)
-                prev_row = row
-                while row == prev_row:
-                    for ch in line:
-                        if ch == '|':
-                            col = col + 1
-                        elif ch == '\n':
-                            row = row + 1
-                            col = 0
-                        cell = cell + ch
-                    row_list.append(cell)
-                    # print(cell)
-                matrix.append(row_list)
-            frame = matrix # TODO
-                    
-            # TO CREATE A NEW FILE WITHOUT THE TITLE:
-            # os.remove(os.path.join(udir,f))
-            # with open(os.path.join(udir,f),'w') as fobj:
-                # contents = fobj.writelines(contents[3:])
-            
+            temp = pd.read_csv(str(os.path.join(udir,f)),sep='|')
+            frame = temp
+        #TODO: do something with temp to append it to returned frame (if exists)     
     return frame
 if __name__ == '__main__':
     df = table_from_txt(os.path.join(os.path.dirname(os.getcwd()),'data/unzipped'))
+    df.to_excel(os.path.abspath('../data/xlsx/most_recent_output.xlsx'))
