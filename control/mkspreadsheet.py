@@ -46,4 +46,4 @@ def table_from_txt(udir):
             
     return frame
 if __name__ == '__main__':
-    df = table_from_txt('/Users/hudsonnash/Dropbox/Mac/Desktop/philippines_download/data/unzipped')    
+    df = table_from_txt(os.
