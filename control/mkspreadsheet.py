@@ -46,4 +46,4 @@ def table_from_txt(udir):
             
     return frame
 if __name__ == '__main__':
-    df = table_from_txt(os.
+    df = table_from_txt(os.path.join(os.path.dirname(os.getcwd()),'data/unzipped'))
