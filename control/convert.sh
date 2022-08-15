@@ -4,3 +4,4 @@ for file in *; do
 	antiword "$file" > "${file%.*}.txt";
     unoconv "$file";
 done;
+
