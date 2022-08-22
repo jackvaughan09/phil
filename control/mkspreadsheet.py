@@ -7,15 +7,18 @@ Created on Wed Jun 22 12:25:52 2022
 
 @author: hudsonnash
 """
-
 import os
+import tabula as tab
+import re
 import pandas as pd
-import tabula as t
-def table_from_txt(udir):
+
+def lamitan(udir):
     for file in os.listdir(udir):
         if os.path.splitext(file)[1] == '.pdf':
-            table = t.read_pdf(os.path.abspath(file))
-            #TODO: This generates an error (FILE CANNOT BE FOUND ERROR)
-    return table
+            dfs = tab.read_pdf(os.path.join(udir,file),lattice=True,pages='all')
+            return pd.concat(dfs)
 if __name__ == '__main__':
-    df = table_from_txt(os.path.join(os.path.dirname(os.getcwd()),'data/unzipped'))
+    # TODO : Classify the document as Lamitan format or Garden City format
+    df = lamitan(os.path.join(os.path.dirname(os.getcwd()),'data/unzipped'))
+    df.to_excel('test.xlsx')
+    
