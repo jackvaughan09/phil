@@ -1,0 +1,295 @@
+;; -*- mode: emacs-lisp; lexical-binding:t; coding: utf-8-emacs; -*-
+;; --------------------------------------------------------------------------
+;; Desktop File for Emacs
+;; --------------------------------------------------------------------------
+;; Created Sat Aug 27 17:30:47 2022
+;; Desktop file format version 208
+;; Emacs version 28.1
+
+;; Global section:
+(setq desktop-saved-frameset [frameset 1 (25354 39703 436202 0) (desktop . "208") "hudsonnash@hudsons-air-2.lan" nil nil ((((minibuffer . t) (fontsize . 0) (font . "-*-Iosevka-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1") (border-width . 0) (internal-border-width . 2) (child-frame-border-width) (right-divider-width . 0) (bottom-divider-width . 0) (vertical-scroll-bars . right) (horizontal-scroll-bars) (foreground-color . "gray97") (background-color . "gray34") (line-spacing) (left-fringe . 8) (right-fringe . 8) (no-special-glyphs) (undecorated) (ns-appearance) (ns-transparent-titlebar) (z-group) (no-focus-on-map) (no-accept-focus) (menu-bar-lines . 1) (tool-bar-lines . 1) (title) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 15) (scroll-bar-height . 15) (alpha) (fullscreen . fullboth) (scroll-bar-background . "gray20") (scroll-bar-foreground . "dark turquoise") (display-type . color) (background-mode . dark) (cursor-color . "white") (last-focus-update) (frameset--id . "344B-44E8-1F05-293F") (frameset--mini t) (height . 51) (width . 234) (modeline . t) (unsplittable) (left . 0) (top . 25) (icon-name) (visibility . t) (display . "hudsons-air-2.lan") (explicit-name) (tool-bar-position . top)) ((min-height . 4) (min-width . 20) (min-height-ignore . 2) (min-width-ignore . 16) (min-height-safe . 1) (min-width-safe . 4) (min-pixel-height . 68) (min-pixel-width . 120) (min-pixel-height-ignore . 34) (min-pixel-width-ignore . 96) (min-pixel-height-safe . 17) (min-pixel-width-safe . 24)) hc (pixel-width . 1435) (pixel-height . 850) (total-width . 239) (total-height . 50) (normal-height . 1.0) (normal-width . 1.0) (combination-limit) (leaf (pixel-width . 715) (pixel-height . 850) (total-width . 119) (total-height . 50) (normal-height . 1.0) (normal-width . 0.5) (buffer ".emacs" (selected) (hscroll . 0) (fringes 8 8 nil nil) (margins nil) (scroll-bars nil 3 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 2493) (start . 1274)) (prev-buffers ("hudson-emacs<Dropbox>" 1 323) ("*Help*" 1 401) ("hudson-emacs<dropbox>" 1 329) ("lisp<dropbox>" 1 204) ("dropbox" 1 745) (".emacs.d<dropbox/hudson-emacs>" 1 1) (".emacs.d<hudsonnash>" 1 557) ("Dropbox" 1 745) ("control<phil>" 1 545))) (leaf (last . t) (pixel-width . 720) (pixel-height . 850) (total-width . 120) (total-height . 50) (normal-height . 1.0) (normal-width . 0.5) (buffer "*Apropos*" (selected) (hscroll . 0) (fringes 8 8 nil nil) (margins nil) (scroll-bars nil 3 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 5875) (start . 3758)) (prev-buffers (".emacs" 1 2300) ("*Apropos*" 1 1) (".emacs.d<.emacs.d>" 1 870) ("hudsonnash" 331 1431) (".emacs~" 1 2187) (".emacs.d<Dropbox/hudson-emacs>" 1 265) ("lisp<Dropbox>" 1 205) ("*terminal*" 3409 3788)))) (((minibuffer . t) (fontsize . 0) (font . "-*-Iosevka-normal-normal-normal-*-13-*-*-*-m-0-iso10646-1") (border-width . 0) (internal-border-width . 2) (child-frame-border-width) (right-divider-width . 0) (bottom-divider-width . 0) (vertical-scroll-bars . right) (horizontal-scroll-bars) (foreground-color . "gray97") (background-color . "gray34") (line-spacing) (left-fringe . 8) (right-fringe . 8) (no-special-glyphs) (undecorated) (ns-appearance) (ns-transparent-titlebar) (z-group) (no-focus-on-map) (no-accept-focus) (menu-bar-lines . 1) (tool-bar-lines . 1) (title) (icon-type) (auto-raise) (auto-lower) (cursor-type . box) (scroll-bar-width . 15) (scroll-bar-height . 15) (alpha) (fullscreen . fullboth) (display-type . color) (background-mode . dark) (cursor-color . "white") (scroll-bar-foreground . "dark turquoise") (environment) (scroll-bar-background . "gray20") (last-focus-update . t) (frameset--id . "EC6D-ECB5-282A-2AD9") (frameset--mini t . t) (height . 51) (width . 234) (modeline . t) (unsplittable) (left . 0) (top . 25) (icon-name) (visibility . t) (display . "hudsons-air-2.lan") (explicit-name) (tool-bar-position . top)) ((min-height . 4) (min-width . 30) (min-height-ignore . 2) (min-width-ignore . 24) (min-height-safe . 1) (min-width-safe . 6) (min-pixel-height . 68) (min-pixel-width . 180) (min-pixel-height-ignore . 34) (min-pixel-width-ignore . 144) (min-pixel-height-safe . 17) (min-pixel-width-safe . 36)) hc (pixel-width . 1435) (pixel-height . 850) (total-width . 239) (total-height . 50) (normal-height . 1.0) (normal-width . 1.0) (combination-limit) (leaf (pixel-width . 715) (pixel-height . 850) (total-width . 119) (total-height . 50) (normal-height . 1.0) (normal-width . 0.5) (buffer "control<phil>" (selected) (hscroll . 0) (fringes 8 8 nil nil) (margins nil) (scroll-bars nil 3 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 1247) (start . 1)) (prev-buffers ("clean_" 1 1) ("init.el" 1 1) ("*eww*" 1 1) ("clean_dump_to_dir.py<phil>" 1207 1207) ("control<phil>" 1 545) ("desktop" 1 348) ("dektop" 1 1) ("hudsonnash" 1843 1843) ("clean_dump_to_dir.py<hudsonnash>" 1 1) ("control<hudsonnash>" 1 1) ("*Messages*" 212 17425) ("*GNU Emacs*" 1 435) ("*scratch*" 1 146))) (leaf (pixel-width . 360) (pixel-height . 850) (total-width . 60) (total-height . 50) (normal-height . 1.0) (normal-width . 0.25) (buffer "mkspreadsheet.py" (selected . t) (hscroll . 0) (fringes 8 8 nil nil) (margins nil) (scroll-bars nil 3 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 140) (start . 1)) (prev-buffers ("*Customize Group: Environment*" 204 204) ("*Customize Group: Emacs*" 74 918) ("mkspreadsheet.py" 1 128) ("clean_dump_to_dir.py<phil>" 1 1))) (leaf (last . t) (pixel-width . 360) (pixel-height . 850) (total-width . 60) (total-height . 50) (normal-height . 1.0) (normal-width . 0.25) (buffer "*terminal*" (selected) (hscroll . 0) (fringes 8 8 nil nil) (margins nil) (scroll-bars nil 3 t nil 0 t nil) (vscroll . 0) (dedicated) (point . 3761) (start . 2595)) (prev-buffers ("mkspreadsheet.py" 1 128)))))])
+(setq desktop-missing-file-warning nil)
+(setq tags-file-name nil)
+(setq tags-table-list nil)
+(setq search-ring nil)
+(setq regexp-search-ring nil)
+(setq register-alist nil)
+(setq file-name-history '("~/Dropbox/hudson-emacs/" "~/dropbox" "~" "~/Dropbox/hudson-emacs/lisp" "~/Dropbox" "~/desktop/su22s/phil/phil/control/" "~/desktop/su22s/phil/phil/control/clean_" "init.el" "~/desktop/su22s/phil/phil/control/clean_dump_to_dir.py" "~/desktop/su22s/phil/phil/control" "~/desktop" "~/dektop" "~" "~/control/clean_dump_to_dir.py" "~/control/" "~/desktop/su22s/phil/phil/control/mkspreadsheet.py" "~/desktop/su22s/phil/phil/control/clean_dump_to_dir.py"))
+
+;; Buffer section -- buffers listed in same order as in buffer list:
+(desktop-create-buffer 208
+  "/Users/hudsonnash/desktop/su22s/phil/phil/control/mkspreadsheet.py"
+  "mkspreadsheet.py"
+  'python-mode
+  '(eldoc-mode global-auto-revert-mode)
+  140
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 25354 39703 297849 0) (buffer-file-coding-system . utf-8-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "control"
+  'dired-mode
+  '(global-auto-revert-mode)
+  1247
+  '(1247 nil)
+  t
+  '("/Users/hudsonnash/desktop/su22s/phil/phil/control/")
+  '((buffer-display-time 25354 39703 297848 0))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/hudsonnash/Dropbox/hudson-emacs/.emacs"
+  ".emacs"
+  'emacs-lisp-mode
+  '(eldoc-mode global-auto-revert-mode)
+  2493
+  '(2375 nil)
+  nil
+  nil
+  '((buffer-display-time 25354 39630 75803 0) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring (2276 1958 1829 1727 1727 1703 1495 1496 1474 1298 1181 1079 190 1060 1162 1162))))
+
+(desktop-create-buffer 208
+  nil
+  "hudson-emacs"
+  'dired-mode
+  '(global-auto-revert-mode)
+  323
+  '(455 nil)
+  t
+  '("/Users/hudsonnash/Dropbox/hudson-emacs/")
+  '((buffer-display-time 25354 38339 426796 0))
+  '((mark-ring (510 450 327 387 388 452))))
+
+(desktop-create-buffer 208
+  nil
+  "hudson-emacs"
+  'dired-mode
+  '(global-auto-revert-mode)
+  329
+  '(324 nil)
+  t
+  '("/Users/hudsonnash/dropbox/hudson-emacs/")
+  '((buffer-display-time 25354 38318 226659 0))
+  '((mark-ring (455 455 455 455 455 325 324))))
+
+(desktop-create-buffer 208
+  nil
+  "lisp"
+  'dired-mode
+  '(global-auto-revert-mode)
+  204
+  '(nil nil)
+  t
+  '("/Users/hudsonnash/dropbox/hudson-emacs/lisp/")
+  '((buffer-display-time 25354 38026 713421 0))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "dropbox"
+  'dired-mode
+  '(global-auto-revert-mode)
+  745
+  '(nil nil)
+  t
+  '("/Users/hudsonnash/dropbox/")
+  '((buffer-display-time 25354 37984 922282 0))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  ".emacs.d"
+  'dired-mode
+  '(global-auto-revert-mode)
+  1
+  '(578 nil)
+  t
+  '("/Users/hudsonnash/dropbox/hudson-emacs/.emacs.d/")
+  '((buffer-display-time 25354 37890 933239 0))
+  '((mark-ring (578 578))))
+
+(desktop-create-buffer 208
+  nil
+  ".emacs.d"
+  'dired-mode
+  '(global-auto-revert-mode)
+  557
+  '(312 nil)
+  t
+  '("/Users/hudsonnash/.emacs.d/")
+  '((buffer-display-time 25354 37831 879330 0))
+  '((mark-ring (557))))
+
+(desktop-create-buffer 208
+  "/Users/hudsonnash/.emacs.d/.emacs.d"
+  ".emacs.d"
+  'fundamental-mode
+  '(global-auto-revert-mode)
+  870
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 25354 37882 117904 0) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "hudsonnash"
+  'dired-mode
+  '(global-auto-revert-mode)
+  1431
+  '(1410 nil)
+  t
+  '("/Users/hudsonnash/")
+  '((buffer-display-time 25354 37797 297711 0))
+  '((mark-ring (1404 1417 1410))))
+
+(desktop-create-buffer 208
+  "/Users/hudsonnash/Dropbox/hudson-emacs/.emacs~"
+  ".emacs~"
+  'emacs-lisp-mode
+  '(eldoc-mode global-auto-revert-mode)
+  2187
+  '(2187 nil)
+  t
+  nil
+  '((buffer-display-time 25354 37770 9531 0) (buffer-file-coding-system . undecided-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  ".emacs.d"
+  'dired-mode
+  '(global-auto-revert-mode)
+  265
+  '(nil nil)
+  t
+  '("/Users/hudsonnash/Dropbox/hudson-emacs/.emacs.d/")
+  '((buffer-display-time 25354 37703 902604 0))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "lisp"
+  'dired-mode
+  '(global-auto-revert-mode)
+  205
+  '(nil nil)
+  t
+  '("/Users/hudsonnash/Dropbox/hudson-emacs/lisp/")
+  '((buffer-display-time 25354 37692 937017 0))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "Dropbox"
+  'dired-mode
+  '(global-auto-revert-mode)
+  745
+  '(nil nil)
+  t
+  '("/Users/hudsonnash/Dropbox/")
+  '((buffer-display-time 25354 36361 586320 0))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/hudsonnash/desktop/su22s/phil/phil/control/clean_"
+  "clean_"
+  'fundamental-mode
+  '(global-auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 25354 36120 859679 0))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/hudsonnash/desktop/su22s/phil/phil/control/init.el"
+  "init.el"
+  'emacs-lisp-mode
+  '(eldoc-mode global-auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 25354 36099 207187 0) (buffer-file-coding-system . prefer-utf-8-unix))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  nil
+  "*eww*"
+  'eww-mode
+  '(global-auto-revert-mode)
+  1
+  '(nil nil)
+  t
+  '(:history ((:url "https://www.wikipedia.org/" :title "Wikipedia")))
+  '((buffer-display-time 25354 35961 356970 0) (buffer-file-coding-system . utf-8-unix) (truncate-lines . t) (eww-history-position . 0))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/hudsonnash/desktop/su22s/phil/phil/control/clean_dump_to_dir.py"
+  "clean_dump_to_dir.py"
+  'python-mode
+  '(eldoc-mode global-auto-revert-mode)
+  1207
+  '(579 nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 25354 35934 233628 0) (buffer-file-coding-system . utf-8-unix))
+  '((mark-ring (575 864 690))))
+
+(desktop-create-buffer 208
+  nil
+  "desktop"
+  'dired-mode
+  '(global-auto-revert-mode)
+  348
+  '(nil nil)
+  t
+  '("/Users/hudsonnash/desktop/")
+  '((buffer-display-time 25354 34960 659065 0))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/hudsonnash/dektop"
+  "dektop"
+  'fundamental-mode
+  '(global-auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 25354 34956 393501 0))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/hudsonnash/control/clean_dump_to_dir.py"
+  "clean_dump_to_dir.py"
+  'python-mode
+  '(eldoc-mode global-auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((tab-width . 8) (indent-tabs-mode) (buffer-display-time 25354 34874 999987 0))
+  '((mark-ring nil)))
+
+(desktop-create-buffer 208
+  "/Users/hudsonnash/control/"
+  "control"
+  'fundamental-mode
+  '(global-auto-revert-mode)
+  1
+  '(nil nil)
+  nil
+  nil
+  '((buffer-display-time 25354 34824 2229 0))
+  '((mark-ring nil)))
+

@@ -8,10 +8,14 @@ Created on Wed Jun 22 12:25:52 2022
 @author: hudsonnash
 """
 import os
-import tabula as tab
+import tabula.io as tab
 import re
 import pandas as pd
 
+def default(filename):
+    dfs = tab.read_pdf(filename,lattice=True,pages='all') # pages attribute of tabula-py is broken
+    print(type(dfs))
+    return dfs
 def lamitan(udir):
     for file in os.listdir(udir):
         if os.path.splitext(file)[1] == '.pdf':
