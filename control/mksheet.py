@@ -30,4 +30,4 @@ if __name__ == '__main__':
     args = parser.parse_args()
     df = cl.extract(args.d)
     print(df)
-    df.to_excel('../data/xlsx/test.xlsx')
+    df.to_excel('../data/xlsx/'+input('Type your desired Excel file name: ')+'.xlsx')
