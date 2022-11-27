@@ -12,3 +12,6 @@ clean:
 	rm -rf __pycache__
 	rm -f ../data/unzipped/*
 	rm -f *.pyc
+	rm -f .DS_Store
+	rm -f ../.DS_Store
+	rm -f ../data/.DS_Store
