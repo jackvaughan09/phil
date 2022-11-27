@@ -47,19 +47,20 @@ def extract(di):
     file_counter = 1
     for filename in os.listdir(di):
         print('Looking for file n = '+str(file_counter)+'...')
+        no_df_found = True
         if os.path.splitext(filename)[1] == ".pdf":
             filename = os.path.join(di,filename)
             print('Now scanning '+filename)
             pdf = p.PdfFileReader(filename)
             page_count = pdf.numPages
             only_one_df = True
-            no_df_found = True
             for pagenum in range(page_count-1):
                 print('Scanning '+str(pagenum+1)+' of '+str(page_count)+' pages')
                 page = pdf.getPage(pagenum)
                 page_content = page.extractText()
                 #print(page_content)
-                # print(page_content.lower())
+                print((page_content.lower(),[i in page_content.lower() for i in c.TARGET_SENTENCE],c.TARGET_SENTENCE))
+                #print(page_content.lower())
                 if all([i in page_content.lower() for i in c.TARGET_SENTENCE]):
                     no_df_found = False
                     target_page = pagenum
@@ -69,10 +70,7 @@ def extract(di):
                         for df in dfs:
                             df = col_fn(filename,df) # rename columns
                             print('One dataframe added of multiple')
-                            print(df['Audit Observation'])
                             out = out.append(df,ignore_index=True)
-                            print('Output in main little loop:')
-                            print(out['Audit Observation'])
                             only_one_df = False
                         #df = manual_merge(dfs) #TODO)
                     elif len(dfs) == 1 and only_one_df:
@@ -82,7 +80,7 @@ def extract(di):
                         print(df['Audit Observation'])
                         print('Single DF in file')
         if no_df_found:
-            error('Could not locate tables in file n = '+file_counter+' -- adjust target sequences list in config.py')
+            print('Could not locate tables in file n = '+str(file_counter)+' -- adjust target sequences list in config.py')
         file_counter = file_counter + 1
         print('Final output:')
     print(out['Audit Observation'])

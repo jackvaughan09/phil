@@ -12,7 +12,7 @@ import tabula.io as tab
 import re
 import pandas as pd
 import clean as cl
-import argparse
+import sys
 
 def default(filename):
     dfs = tab.read_pdf(filename,lattice=True,pages='all') # pages attribute of tabula-py is broken
@@ -23,11 +23,7 @@ def lamitan(udir):
             dfs = tab.read_pdf(os.path.join(udir,file),lattice=True,pages='all')
             return pd.concat(dfs)
 if __name__ == '__main__':
-    # df = lamitan(os.path.join(os.path.dirname(os.getcwd()),'data/unzipped'))
-    # df.to_excel('test.xlsx')
-    parser = argparse.ArgumentParser()
-    parser.add_argument("-d")
-    args = parser.parse_args()
-    df = cl.extract(args.d)
-    print(df)
+    data_url = sys.argv[1]
+    print(data_url)
+    df = cl.extract(data_url)
     df.to_excel('../data/xlsx/'+input('Type your desired Excel file name: ')+'.xlsx')
