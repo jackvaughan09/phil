@@ -9,3 +9,5 @@ Created on Sat Aug 27 17:55:03 2022
 """
 
 TARGET_SENTENCE = ['status','prior','year','audit','recommendations']
+CANON_HEADERS = ['audit observation','recommendations','references','status of implementation','reasons for partial/non-implementation','management action','observations and recommendations']
+FILENAME_TARGET = ['Status']
