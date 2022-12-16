@@ -1,19 +1,49 @@
-VENV = venv/bin
+# abstraction of variables to circumvent OS incompatibilities within Makefile, no containerization needed
+ifeq ($(OS),Windows_NT)
+	VENV = venv\Scripts
+	FILE = Activate.bat
+	ACTIVATE = $(VENV)\$(FILE)
+	PIP = $(VENV)\pip
+	RM = del /S /F /Q 1>nul
+	RM_MISC = echo "No miscellaneous files to delete in Windows"
+	UNZIPPED = ..\data\unzipped\*
+	PYTHON = $(VENV)\python
+	OFFICE_PYTHON = "C:\Program Files (x86)\LibreOffice 4.4\program\python.exe"
+	UNOCONV = $(VENV)\unoconv
+# MAKESHELL = \bin\sh
+else # linux/macos
+	VENV ?= venv/bin
+	FILE ?= activate
+	ACTIVATE ?= . $(VENV)/$(FILE)
+	PIP ?= $(VENV)\pip
+	RM ?= rm -rf
+	RM_MISC ?= find .. -name .DS_Store -type f -delete
+	UNZIPPED = ../data/unzipped/*
+	PYTHON = $(VENV)/python
+	UNOCONV = $(VENV)/unoconv
+	OFFICE_PYTHON = /Applications/LibreOffice.app/Contents/MacOS/python
+endif
 
-run: $(VENV)/activate
-	docker run -dp 3000:3000 phil
-	$(VENV)/python3 clean.py 
-	./convert.sh ../data/unzipped
-	$(VENV)/python3 mksheet.py ../data/unzipped
+test all:
+	$(warning $(UNO_PATH) $(origin UNO_PATH))
+
 setup: requirements.txt
-	docker build -t phil .
+# docker build -t phil .
 	python3 -m venv venv
-	. $(VENV)/activate
-	$(VENV)/pip install -r requirements.txt
+	$(ACTIVATE)
+	$(PIP) install -r requirements.txt
+	$(ACTIVATE)
+	$(PIP) install -r requirements.txt
+	
+run: $(ACTIVATE)
+# docker run -it phil
+	$(PYTHON) clean.py 
+	convert.bat ..\data\unzipped $(OFFICE_PYTHON) $(UNOCONV)
+	$(PYTHON) mksheet.py ../data/unzipped
+
 clean:
-	rm -rf __pycache__
-	rm -f ../data/unzipped/*
-	rm -f *.pyc
-	rm -f .DS_Store
-	rm -f ../.DS_Store
-	rm -f ../data/.DS_Store
+	@echo $(RM)
+	$(RM) __pycache__
+	$(RM) $(UNZIPPED)
+	$(RM) *.pyc
+	$(RM_MISC)
