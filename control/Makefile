@@ -37,8 +37,9 @@ setup: requirements.txt
 	
 run: $(ACTIVATE)
 # docker run -it phil
-	$(PYTHON) clean.py 
-	convert.bat ..\data\unzipped $(OFFICE_PYTHON) $(UNOCONV)
+	$(PYTHON) clean.py
+	echo $(PATH)
+	bash convert.sh ..\data\unzipped $(OFFICE_PYTHON) $(UNOCONV)
 	$(PYTHON) mksheet.py ../data/unzipped
 
 clean:

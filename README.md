@@ -3,11 +3,12 @@ Reduce the time requirement of audit report analysis.
 ## Instructions
 ### Installation
 #### Installing Linux Distribution, LibreOffice, and the Phil repo
-1. Install Ubuntu distribution on your Windows machine (if you are a Windows user). This makes the installation process faster. Also, the command line is a great tool and trying to understand the Windows command line is a waste of time. Linux is great and there is a reason why people use it. It has many benefits, one being that the learning curve is easier.
+1. Install Cygwin on your Windows machine (if you are a Windows user). This makes me not need to finish debugging convert.bat (very difficult).
 2. Install LibreOffice. If you have a Linux OS, simply run in the terminal:
 ```bash
 sudo apt install libreoffice
 ```
+- Make sure that your LibreOffice installation is located where control/Makefile thinks it is.
 3. Clone this repository by running the following inside the src folder in your usr folder:
 ```bash
 git clone https://github.com/hudnash/phil.git
