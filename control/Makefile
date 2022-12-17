@@ -21,7 +21,7 @@ else # linux/macos
 	UNZIPPED = ../data/unzipped/*
 	PYTHON = $(VENV)/python
 	UNOCONV = $(VENV)/unoconv
-	OFFICE_PYTHON = /Applications/LibreOffice.app/Contents/Resources/python
+	OFFICE_PYTHON = /Applications/LibreOffice.app/Contents/Frameworks
 endif
 
 test all:
