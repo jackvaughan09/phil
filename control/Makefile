@@ -21,7 +21,7 @@ else # linux/macos
 	UNZIPPED = ../data/unzipped/*
 	PYTHON = $(VENV)/python
 	UNOCONV = $(VENV)/unoconv
-	OFFICE_PYTHON = /Applications/LibreOffice.app/Contents/MacOS/python
+	OFFICE_PYTHON = /Applications/LibreOffice.app/Contents/Resources/python
 endif
 
 test all:
@@ -39,7 +39,7 @@ run: $(ACTIVATE)
 # docker run -it phil
 	$(PYTHON) clean.py
 	echo $(PATH)
-	bash convert.sh ..\data\unzipped $(OFFICE_PYTHON) $(UNOCONV)
+	bash convert.sh $(UNZIPPED) $(OFFICE_PYTHON) $(UNOCONV)
 	$(PYTHON) mksheet.py ../data/unzipped
 
 clean:
