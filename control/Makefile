@@ -15,7 +15,7 @@ else # linux/macos
 	VENV ?= venv/bin
 	FILE ?= activate
 	ACTIVATE ?= . $(VENV)/$(FILE)
-	PIP ?= $(VENV)\pip
+	PIP ?= $(VENV)/pip
 	RM ?= rm -rf
 	RM_MISC ?= find .. -name .DS_Store -type f -delete
 	UNZIPPED = ../data/unzipped/*
