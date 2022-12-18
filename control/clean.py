@@ -13,6 +13,8 @@ import os
 from shutil import rmtree
 import PyPDF2 as p
 import config as c
+import code
+from pathlib import Path
 
 def unzip(diz,diu):
     z_list = [os.path.join(diz,f) for f in os.listdir(diz) if os.path.isfile(os.path.join(diz,f)) and f[0] != '.']
@@ -35,8 +37,12 @@ def remove_junk(di):
         except:
             pass
 if __name__ == '__main__':
-    _dir = os.path.dirname(os.path.dirname(__file__))
+    _dir = str(Path(__file__).resolve().parents[1])
     zipped_dir = os.path.join(_dir,'data','zip')
     unzipped_dir = os.path.join(_dir,'data','unzipped')
     unzip(zipped_dir,unzipped_dir)
     remove_junk(unzipped_dir)
+
+
+# if __name__ == '__main__':
+#     _dir = str(Path(__file__).resolve().parents[1])

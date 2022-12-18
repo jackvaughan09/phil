@@ -11,7 +11,7 @@ ifeq ($(OS),Windows_NT)
 	OFFICE_PYTHON = "C:\Program Files (x86)\LibreOffice 4.4\program\python.exe"
 	UNOCONV = $(VENV)\unoconv
 # MAKESHELL = \bin\sh
-else # linux/macos
+else # linux/macos 
 	VENV ?= venv/bin
 	FILE ?= activate
 	ACTIVATE ?= . $(VENV)/$(FILE)
@@ -22,7 +22,7 @@ else # linux/macos
 	PYTHON = $(VENV)/python
 	UNOCONV = $(VENV)/unoconv
 	OFFICE_PYTHON = /Applications/LibreOffice.app/Contents/Frameworks
-endif
+endif                      #usr/bin/libreoffice
 
 test all:
 	$(warning $(UNO_PATH) $(origin UNO_PATH))
@@ -38,7 +38,6 @@ setup: requirements.txt
 run: $(ACTIVATE)
 # docker run -it phil
 	$(PYTHON) clean.py
-	echo $(PATH)
 	bash convert.sh $(UNZIPPED) $(OFFICE_PYTHON) $(UNOCONV)
 	$(PYTHON) mksheet.py ../data/unzipped
 
