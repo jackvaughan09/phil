@@ -21,7 +21,7 @@ else # linux/macos
 	UNZIPPED = ../data/unzipped/*
 	PYTHON = $(VENV)/python
 	UNOCONV = $(VENV)/unoconv
-	OFFICE_PYTHON = /Applications/LibreOffice.app/Contents/Frameworks
+    OFFICE_PYTHON = /usr/bin/python3.8
 endif                      #usr/bin/libreoffice
 
 test all:
@@ -36,14 +36,15 @@ setup: requirements.txt
 	$(PIP) install -r requirements.txt
 	
 run: $(ACTIVATE)
-# docker run -it phil
 	$(PYTHON) clean.py
-	bash convert.sh $(UNZIPPED) $(OFFICE_PYTHON) $(UNOCONV)
+	bash convert.sh  $(UNZIPPED) $(OFFICE_PYTHON) $(UNOCONV)
 	$(PYTHON) mksheet.py ../data/unzipped
+
+# consider using the wsl python path?
+# consider using the venv python path?
 
 clean:
 	@echo $(RM)
-	$(RM) __pycache__
 	$(RM) $(UNZIPPED)
 	$(RM) *.pyc
 	$(RM_MISC)
