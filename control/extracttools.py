@@ -4,7 +4,7 @@ from difflib import SequenceMatcher
 import PyPDF2 as p
 import os
 def default(filename):
-    dfs = tab.read_pdf(filename,lattice=True,pages='all') # pages attribute of tabula-py is broken
+    dfs = tab.read_pdf(filename,lattice=True,pages='1') # pages attribute of tabula-py is broken
     return dfs
 def rename_columns(dfs:list) -> pd.DataFrame:
     cols = [df.columns for df in dfs]
@@ -75,14 +75,14 @@ def extract(di):
             print('Now scanning '+filename)
             pdf = p.PdfFileReader(filename)
             page_count = pdf.numPages
-            for pagenum in range(page_count):
+            for pagenum in range(page_count): # PROBLEM #TODO 
                 print('Looking for Part 3 on p. '+str(pagenum+1)+' of '+str(page_count)+' pages')
                 page = pdf.getPage(pagenum)
                 page_content = page.extractText()
                 if all([target in page_content.lower() for target in conf.TARGET_SENTENCE]):
                     no_df_found = False
                     target_page = pagenum
-                    delete_pages_before(filename,target_page)
+                    delete_pages_before(filename,target_page) # PROBLEM #TODO: REPETITION OF ROWS OF DATA. This could likely be fixed by setting pages = "1" in tab.read_pdf in default(..).
                     dfs = default(filename) # feed chunks of PDF table scraped via tabula/io.py
                     if len(dfs) > 1:
                         count = 1

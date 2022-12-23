@@ -21,7 +21,7 @@ else # linux/macos
 	UNZIPPED = ../data/unzipped/*
 	PYTHON = $(VENV)/python
 	UNOCONV = $(VENV)/unoconv
-    OFFICE_PYTHON = /usr/bin/python3.8
+    OFFICE_PYTHON = /usr/bin/python3.10
 endif                      #usr/bin/libreoffice
 
 test all:
@@ -30,14 +30,14 @@ test all:
 setup: requirements.txt
 # docker build -t phil .
 	python3 -m venv venv
-	$(ACTIVATE)
-	$(PIP) install -r requirements.txt
+	echo $(ACTIVATE)
 	$(ACTIVATE)
 	$(PIP) install -r requirements.txt
 	
 run: $(ACTIVATE)
 	$(PYTHON) clean.py
-	bash convert.sh  $(UNZIPPED) $(OFFICE_PYTHON) $(UNOCONV)
+	bash convert.sh  $(UNZIPPED)
+# $(UNOCONV) or unoconv does different thing. Maybe specify OFFICE_PYTHON as well
 	$(PYTHON) mksheet.py ../data/unzipped
 
 # consider using the wsl python path?
