@@ -18,7 +18,7 @@ else # linux/macos
 	PIP ?= $(VENV)/pip
 	RM ?= rm -rf
 	RM_MISC ?= find .. -name .DS_Store -type f -delete
-	UNZIPPED = ../data/unzipped/*
+	UNZIPPED = ../data/unzipped/
 	PYTHON = $(VENV)/python
 	UNOCONV = $(VENV)/unoconv
     OFFICE_PYTHON = /usr/bin/python3.10
@@ -36,7 +36,7 @@ setup: requirements.txt
 	
 run: $(ACTIVATE)
 	$(PYTHON) clean.py
-	bash convert.sh  $(UNZIPPED)
+	./convert.sh  $(UNZIPPED)
 # $(UNOCONV) or unoconv does different thing. Maybe specify OFFICE_PYTHON as well
 	$(PYTHON) mksheet.py ../data/unzipped
 

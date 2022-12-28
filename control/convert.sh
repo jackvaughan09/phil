@@ -1,4 +1,4 @@
 #!/bin/bash
-for file in "$1" ; do
-unoconv "$file"
+for f in "$1"/*; do
+    unoconv "$f"
 done
