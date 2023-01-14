@@ -23,7 +23,6 @@ else # linux/macos
 	UNZIPPED = ../data/unzipped
 	PYTHON = $(VENV)/python
 	UNOCONV = $(VENV)/unoconv
-    OFFICE_PYTHON = /usr/bin/python3.10
 	PDF = ../data/pdf
 endif
 
