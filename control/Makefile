@@ -36,16 +36,16 @@ setup: requirements.txt
 clean:
 	echo $(RM)
 	$(RM) $(UNZIPPED)
-	$(RM) $(PDF)
+	$(RM) $(PDF)m
 	$(RM) *.pyc
 	$(RM_MISC)
-
-run: $(ACTIVATE) #clean
-	$(PYTHON) clean.py ../data/zip ../data/unzipped
-	./convert.sh  $(UNZIPPED)
-#	$(PYTHON) mksheet.py ../data/unzipped
 
 test: #$(ACTIVATE) clean
 #	$(PYTHON) clean.py ../test_data/zip ../test_data/unzipped
 #	./convert.sh ../test_data/unzipped
 	$(PYTHON) test_extract_all.py
+
+run: $(ACTIVATE) test clean
+	$(PYTHON) clean.py ../data/zip ../data/unzipped
+	./convert.sh  $(UNZIPPED)
+#	$(PYTHON) mksheet.py ../data/unzipped
