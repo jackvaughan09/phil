@@ -15,11 +15,11 @@ brew install libreoffice
 ```bash
 cd Documents/Philipines
 ```
-- You may need to create a github account in order to initialize the repository. If so, do that. 
 4. Clone this repository
 ```bash
 git clone https://github.com/hudnash/phil.git
 ```
+- You may need to create a github account in order to clone the repository. If so, do that. 
 5. While in the project's root directory (phil), run the following in your terminal:
 ```bash
 cd phil/control
@@ -31,13 +31,13 @@ cd phil/control
 make setup
 ```
 ### Normal Operation: Transferring Audit Data to a Spreadsheet
-1. Drop the .ZIP files in the phil/data/zip folder. Remove any .ZIP files that are unnecessary or that have already been scraped.
+1. After downloading from the site, drop your .ZIP files in the phil/data/zip folder. Remove any .ZIP files that are unnecessary or that have already been scraped.
 2. Run the following command in terminal:
 ```bash
 cd phil/control/venv
 source bin/activate
 ```
-- This activates the virtual environment in which we run our code. You should see '(venv)' at the start of the current terminal line.
+- This activates the virtual environment in which we run our code. You should see '(venv)' at the start of the current terminal line after running this.
 3. Navigate back to control & run make run: (the 'cd ..' command moves you up one folder)
 ```bash
 cd ..
