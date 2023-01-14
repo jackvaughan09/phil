@@ -29,7 +29,7 @@ if __name__ == '__main__':
     new_data_url = '../data/pdf'
     mv_to_pdf_folder(data_url,new_data_url)
     data_url = new_data_url
-    df = extract(data_url)
+    df = extract_all(data_url)
     if not os.path.exists('../data/xlsx'):
         os.mkdir('../data/xlsx')
     df.to_excel('../data/xlsx/'+get_new_wb_name()+'.xlsx')

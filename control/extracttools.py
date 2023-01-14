@@ -127,12 +127,18 @@ def get_pg_rng(pdf_url):
     if len(pgs) < 1:
         print('Warning: No pages contain tables: '+pdf_url)
         return '0'
-    pgs = longest_seq(pgs)
-    if len(pgs) > 0:
+    elif len(pgs) < 2: 
+        pgs = [pg for pg in range(pgs[0],n)]
+        print('Warning: Only 1 page was detected containing target title')
         return str(min(pgs)+1) + '-' + str(max(pgs)+1)
+    elif longest_seq(pgs) == []:
+        print('Warning: May have missed a document')
+        return '0' # when this occurred, it was the wrong table
     else:
-        print('Warning: No pages contain tables: '+pdf_url)
-        return '0'
+        pgs = longest_seq(pgs) # assume that the area with the most instances of the target sequence words
+                           # is where Part IV actually begins as opposed to some front matter or table of contents
+        pgs = [pg for pg in range(pgs[0],n)] # scrape starting from official beginning of Part IV until the end of the document
+        return str(min(pgs)+1) + '-' + str(max(pgs)+1)
 def extract(di):
     target_page = -1
     table_end_page = -1
@@ -177,3 +183,11 @@ def extract(di):
             print('Exception: Could not locate tables in file #'+str(file_counter)+' '+filename+'\nTry: Adjust target sequences list in config.py')
         file_counter = file_counter + 1
     return out
+def city(df:pd.DataFrame,pdf_url:str)->pd.DataFrame:
+    df = df.assign(city=''.join([c for c in ((pdf_url.split('/')[-1])[2:].split('_'))[0].replace('-','') if ord(c) >= 65]))
+    for cell in df['city']:
+        if cell in list(conf.ABBREV_CITY_NAMES.keys()):
+            df = df.assign(city = conf.ABBREV_CITY_NAMES[cell])
+    return df
+def year(df:pd.DataFrame,pdf_url:str)->pd.DataFrame:
+    return df.assign(year=''.join([c for c in ((pdf_url.split('/')[-1])[2:].split('_'))[0].replace('-','') if ord(c) < 65]))

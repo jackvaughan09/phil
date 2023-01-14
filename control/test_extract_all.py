@@ -1,7 +1,7 @@
 from unittest import TestCase, main
-import extract
-import extract_all
+from extract_all import extract_all
 import os
+from config import ABBREV_CITY_NAMES
 
 class TestExtractAll(TestCase):
     def setUp(self):
@@ -10,7 +10,6 @@ class TestExtractAll(TestCase):
         self.pdf = '../test_data/pdf'
         self.zipd = '../test_data/zip'
     def test_scrapability(self): # IGACOS causes problem in test of convert.sh
-        return
         """ We need all location-year combinations represented in output (convert.sh) """
         """ Issues of lack of output are caused by unconventional formatting """
         # all location-year combos present in /unzipped/
@@ -19,12 +18,17 @@ class TestExtractAll(TestCase):
         'zipd':[filename.replace('-',' ').replace('Annual Audit Report','').replace('.zip','').split('  ') for filename in os.listdir(self.zipd)],
         'pdf':[(filename[2:].split('_'))[0].replace('-','') for filename in os.listdir(self.pdf) if filename.split('.')[1] == 'pdf']
         }
+        for ind,fn in enumerate(cities_years['pdf']):
+            for key in list(ABBREV_CITY_NAMES.keys()): 
+                if key in fn:
+                    cities_years['pdf'][ind] = fn.replace(key,ABBREV_CITY_NAMES[key])
         for city_year in cities_years['zipd']:
             self.assertIn((city_year[0]+city_year[1]).replace(' ',''), cities_years['pdf'])
         # all location-year combos present in combined dataframe
             # if not, then problem in TARGET_SENTENCE
+        df = extract_all(self.pdf)
         for city_year in cities_years['zipd']:
-            self.assertIn(city_year[0].join(city_year[1]).replace(' ',''), extract_all(self.pdf))
+            self.assertIn((city_year[0]+city_year[1]).replace(' ',''), df['city'].values+df['year'].values)
     def test_overflow_basic(self):
         """ All overflow must be recognized by scraper """
         # overflow will manifest as blank/nonsense headers
