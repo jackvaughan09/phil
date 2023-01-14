@@ -1,4 +1,4 @@
-# phil
+# phil MacOS Setup
 Reduce the time requirement of audit report analysis.
 ## Instructions
 ### Installation
