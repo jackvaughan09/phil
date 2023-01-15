@@ -48,6 +48,7 @@ def polish(df: pd.DataFrame) -> pd.DataFrame:
     cols = df.columns
     newcols = [good_match(col,conf.CANON_HEADERS) for col in cols]
     df.columns = newcols
+    print(df.columns)
     return df
 def is_header(row):
     if sum([bool(any([fuzz.token_sort_ratio(cell,target) > 60 for target in ref])) for cell in head.loc[row]]) < 2:
@@ -56,33 +57,36 @@ def is_header(row):
     else:
         return False
 def separate_overflow(df,ind,page_range) -> list[pd.DataFrame]:
-    if is_header(df.columns):
-        return [df]
-    else:
-        # step 1 - find where table actually begins
-        start = 0
-        for row in range(len(df)):
-            if is_header(df.loc[row]):
-                start = row
-        if start == 0:
-            if not is_header(df.loc[0]):
-                if not df.empty: # case 2: no row resembling a header found
-                    df.columns = conf.CANON_HEADERS # could result in mismatched headers
-                    raise(BaseException('Could result in mismatched headers on p.'+str(int(page_range.split('-')[0])+ind)))
-        overflow = df.loc[0:start]
-        df.drop([i for i in range(0,start)])
-        df.columns = df.loc[start]
-        df.reset_index()
-        return [df,overflow]
+    # step 1 - find where table actually begins
+    start = 0
+    print('separate_overflow')
+    for row in range(len(df)):
+        print(row)
+        if is_header(df.loc[row]):
+            start = row
+            print('is header')
+    if start == 0:
+        if not is_header(df.loc[0]):
+            if not df.empty: # case 2: no row resembling a header found
+                df.columns = conf.CANON_HEADERS # could result in mismatched headers
+                raise(BaseException('Could result in mismatched headers on p.'+str(int(page_range.split('-')[0])+ind)))
+    overflow = df.loc[0:start]
+    df.drop([i for i in range(0,start)])
+    df.columns = df.loc[start]
+    df.reset_index()
+    return [df,overflow]
 def fix_overflow(dfs: list[pd.DataFrame],page_range: str) -> list[pd.DataFrame]:
+    print('SHOW UP DAMMIT!')
     for i,df in enumerate(dfs[1:]):
+        print('why isn\'t this printing?')
         [df,overflow] = separate_overflow(df,i,page_range)
         # if sum([col != '' for col in overflow]) <= 2: # merging with last row on prev page TODO
         if 0 == sum([s in overflow['observations and recommendations'][0] for s in conf.BULLET_STRS],[s in overflow['audit observation'][0] for s in conf.BULLET_STRS]):
             dfs[i-1].loc[-1] += overflow
         dfs[i-1].append(overflow)
+    print('OVERFLOW: '+overflow)
     return dfs
-def overflow_check_and_correct(df,ref,main_df):
+def overflow_check(df,ref,main_df):
     head = df.head(10)
     headers_at = 0
     for row in range(len(head)):

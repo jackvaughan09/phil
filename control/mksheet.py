@@ -13,6 +13,8 @@ from extracttools import extract
 import sys
 from datetime import date
 import os
+import shutil
+from extract_all import extract_all
 
 def get_new_wb_name():
     return date.today().strftime("%B %d, %Y")
@@ -20,7 +22,7 @@ def get_new_wb_name():
 def mv_to_pdf_folder(di,ndi):
     for file in os.listdir(di):
         if 'pdf' in os.path.splitext(file)[1].lower():
-            os.rename(os.path.join(di,file),os.path.join(ndi,os.path.basename(file)))
+            shutil.move(os.path.join(di,file),os.path.join(ndi,os.path.basename(file)))
             print(file,ndi)
 
 if __name__ == '__main__':

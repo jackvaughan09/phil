@@ -9,6 +9,7 @@ def extract(pdf_url) -> pd.DataFrame:
     print(pg_rng)
     dfs = tb.read_pdf(input_path = pdf_url, output_format = 'dataframe', pages = pg_rng, lattice = True, multiple_tables = True)
     dfs = [polish(df) for df in dfs]
+    print('fix_overflow print()\'s won\'t print')
     dfs = [dfs[0]]+[fix_overflow(dfs,pg_rng) for df in dfs[1:]]
     dfs = [year(city(df,pdf_url),pdf_url) for df in dfs]
     out = pd.concat(dfs,ignore_index=True,axis=0)
