@@ -32,7 +32,7 @@ setup: requirements.txt
 	$(ACTIVATE)
 	$(PIP) install -r requirements.txt
 
-clean:
+clean: 
 	echo $(RM)
 	$(RM) $(UNZIPPED)
 	$(RM) $(PDF)m
@@ -44,14 +44,7 @@ test: #$(ACTIVATE) clean
 #	./convert.sh ../test_data/unzipped
 	$(PYTHON) test_extract_all.py
 
-<<<<<<< HEAD
-run: #$(ACTIVATE) test clean
-#	$(PYTHON) clean.py ../data/zip ../data/unzipped
-#	./convert.sh  $(UNZIPPED)
-	$(PYTHON) mksheet.py ../data/unzipped
-=======
 run: $(ACTIVATE) test clean
 	$(PYTHON) clean.py ../data/zip ../data/unzipped
 	./convert.sh  $(UNZIPPED)
-#	$(PYTHON) mksheet.py ../data/unzipped
->>>>>>> fb5bb1a7559be873e317a5086980331e868edd5e
+	$(PYTHON) mksheet.py ../data/unzipped
