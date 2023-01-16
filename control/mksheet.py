@@ -35,3 +35,4 @@ if __name__ == '__main__':
     if not os.path.exists('../data/xlsx'):
         os.mkdir('../data/xlsx')
     df.to_excel('../data/xlsx/'+get_new_wb_name()+'.xlsx')
+    print('All done!')
