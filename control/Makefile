@@ -34,11 +34,10 @@ setup: requirements.txt
 
 clean: 
 	echo $(RM)
-	$(RM) $(UNZIPPED)
-	$(RM) $(PDF)m
+	$(RM) $(UNZIPPED)/*
+	$(RM) $(PDF)/*
 	$(RM) *.pyc
 	$(RM_MISC)
-
 test: #$(ACTIVATE) clean
 #	$(PYTHON) clean.py ../test_data/zip ../test_data/unzipped
 #	./convert.sh ../test_data/unzipped
