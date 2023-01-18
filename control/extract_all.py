@@ -1,7 +1,7 @@
 from extract import extract
 import os
 import pandas as pd
-from config import CANON_HEADERS, AUTOCORRECT_DICT
+from config import CANON_HEADERS, AUTOCORRECT_DICT 
 
 
 def assert_canon_columns(dfs):
@@ -28,9 +28,11 @@ def remove_body_header_rows(df):
 
 def extract_all(pdf_dir) -> pd.DataFrame:
     dfs = []
+    print('Beginning extraction process...')
     for fi in os.listdir(pdf_dir):
         if os.path.splitext(fi)[1] == '.pdf':
             dfs.append(extract(os.path.join(pdf_dir,fi)))
+    print('Finished extracting relevant tables from all files')
     # remove NoneType values
     dfs = list(filter(lambda x: x is not None,dfs))
     # then assert equal columns
@@ -38,4 +40,5 @@ def extract_all(pdf_dir) -> pd.DataFrame:
     # concat result
     full_df = pd.concat(dfs)
     full_df = remove_body_header_rows(full_df)
+    
     return full_df
