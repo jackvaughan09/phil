@@ -25,7 +25,6 @@ def unzip(diz,diu):
 def remove_junk(di):
     uz_list = [os.path.join(di,f) for f in os.listdir(di)]
     for f in uz_list:
-        # code.interact(local=dict(globals(),**locals()))
         has_filename_target = any([target in os.path.splitext(f)[0] for target in c.FILENAME_TARGET])
         is_pdf = bool(os.path.splitext(f)[1]=='.pdf')
         is_doc = bool(os.path.splitext(f)[1]=='.doc')
