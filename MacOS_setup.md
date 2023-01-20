@@ -1,15 +1,22 @@
-# phil MacOS Setup
+# phil Setup Guide
 Reduce the time requirement of audit report analysis.
 ## Instructions
 ### Installation
-#### Installing Homebrew and LibreOffice:
 
-##### Homebrew:
-1. If you don't already have it installed, visit this website https://brew.sh/ and follow the installation instructions. It's very straightforward. 
+### Homebrew: (MacOS only)
+If you don't already have it installed, visit this website https://brew.sh/ and follow the installation instructions. It's very straightforward. 
 - Make sure you read the instructions printed in the terminal after installing homebrew in order to add to your system PATH. Important!! 
+
+
+### WSL: (Windows only)
+https://learn.microsoft.com/en-us/windows/wsl/install Follow this guide.
+
+#### IMPORTANT INFORMATION
 
 ##### LibreOffice:
 2. Now we install libreoffice
+
+
 ```bash
 brew install libreoffice
 ```
