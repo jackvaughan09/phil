@@ -18,7 +18,7 @@ def camelot_extract(pdf_url):
     pg_rng = get_pg_rng(pdf_url) #TODO: improving pg_rng function accuracy:
     if pg_rng == '0':
         return
-    print(f'Attempting alternate file reader for {pdf_url}'
+    print(f'Attempting to read tables from: {pdf_url}'
           '\nThis might take a while.')    
     
     # ensure string typing
@@ -30,11 +30,10 @@ def camelot_extract(pdf_url):
         line_scale = 30,
         pages = pg_rng
     )]                                  
-    print(f'Finished reading {len(dfs)} tables from file {pdf_url}')
     if len(dfs)< 1:
         print('No tables found. Continuing.')
         return pd.DataFrame(columns=CANON_HEADERS)
-    
+    print(f'Finished reading {len(dfs)} tables from file {pdf_url}')
     dfs = locate_relevant_camelot_tables(dfs)
     dfs = phil_format(dfs, pdf_url)
     out = pd.concat(dfs).reset_index(drop=True)
