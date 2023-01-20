@@ -43,12 +43,11 @@ def good_match(og:str,ref:list[str]):
 def polish(df: pd.DataFrame) -> pd.DataFrame:
     # remove \r characters
     df = df.rename(lambda s:s.replace('\r',' '),axis='columns') # remove '\r' from headers
-    df = df.replace('\r','',regex=True) # replace all '\r' throughout
+    df = df.replace('\r',' ',regex=True) # replace all '\r' throughout
     # approximate headers
     cols = df.columns
     newcols = [good_match(col,conf.CANON_HEADERS) for col in cols]
     df.columns = newcols
-    print(df.columns)
     return df
 def is_header(row):
     if sum([bool(any([fuzz.token_sort_ratio(cell,target) > 60 for target in ref])) for cell in head.loc[row]]) < 2:
@@ -143,6 +142,31 @@ def get_pg_rng(pdf_url):
                            # is where Part IV actually begins as opposed to some front matter or table of contents
         pgs = [pg for pg in range(pgs[0],n)] # scrape starting from official beginning of Part IV until the end of the document
         return str(min(pgs)+1) + '-' + str(max(pgs)+1)
+
+def locate_relevant_tables(dfs, ref):
+    counter = 0
+    for i,df in enumerate(dfs):
+        columns = [good_match(col,ref) for col in df.columns]
+        print('Done!')
+        # fuzzy logic check if first row is good match of target headers
+        # if no, remove df from dfs
+        print('Checking for relevance...', end=' ')
+        try:
+            if len(set(ref).intersection(set(columns))) <= 2:
+                counter += 1
+                print(f'Irrelevant, removed table {i+1}/{len(dfs)}')
+                continue
+        except Exception as e:
+            print(f'Error: {e} occurred while attempting' 
+            'to check table relevance.\nData has been lost.')
+            continue
+        
+        print('Relevant table collected!')
+        # if yes, then use good match headers for column names
+        df.columns = columns 
+        dfs[i] = df
+    return dfs
+
 def extract(di):
     target_page = -1
     table_end_page = -1
@@ -195,3 +219,6 @@ def city(df:pd.DataFrame,pdf_url:str)->pd.DataFrame:
     return df
 def year(df:pd.DataFrame,pdf_url:str)->pd.DataFrame:
     return df.assign(year=''.join([c for c in ((pdf_url.split('/')[-1])[2:].split('_'))[0].replace('-','') if ord(c) < 65]))
+
+
+    
