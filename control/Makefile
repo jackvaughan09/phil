@@ -43,7 +43,7 @@ test: #$(ACTIVATE) clean
 #	./convert.sh ../test_data/unzipped
 	$(PYTHON) test_extract_all.py
 
-run: $(ACTIVATE) test clean
+run:
 	$(PYTHON) clean.py ../data/zip ../data/unzipped
 	./convert.sh  $(UNZIPPED)
 	$(PYTHON) mksheet.py ../data/unzipped
