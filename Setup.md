@@ -11,8 +11,6 @@ If you don't already have it installed, visit this website https://brew.sh/ and 
 ### WSL: (Windows only)
 https://learn.microsoft.com/en-us/windows/wsl/install Follow this guide.
 
-#### IMPORTANT INFORMATION
-
 ##### LibreOffice:
 1. Now we install libreoffice
 ```bash
@@ -20,8 +18,8 @@ brew install libreoffice    # replace "brew install" with "sudo apt install" on 
 ```
 ##### Camelot:
 2. Navigate to the links below and follow the install instructions: 
-Dependencies: https://camelot-py.readthedocs.io/en/master/user/install-deps.html#install-deps
-Package: https://camelot-py.readthedocs.io/en/master/user/install.html#install (use PIP instructions, not conda)
+- Dependencies: https://camelot-py.readthedocs.io/en/master/user/install-deps.html#install-deps 
+- Package: https://camelot-py.readthedocs.io/en/master/user/install.html#install (use PIP instructions, not conda)
 
 
 ### System Setup:
