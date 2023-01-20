@@ -6,3 +6,8 @@ fuzzywuzzy==0.18.0
 uno==0.3.3
 openpyxl==3.0.10
 unotools==0.3.3
+PyCryptodome
+opencv-python
+camelot-py
+ghostscript
+tesseract
