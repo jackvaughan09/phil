@@ -27,19 +27,24 @@ def remove_junk(di):
     for f in uz_list:
         has_filename_target = any([target in os.path.splitext(f)[0] for target in c.FILENAME_TARGET])
         is_pdf = bool(os.path.splitext(f)[1]=='.pdf')
-        is_doc = bool(os.path.splitext(f)[1]=='.doc')
+        is_doc = bool(os.path.splitext(f)[1] in ['.docx','.doc'])
         print(f'''
         File: 
         {f.split('/')[3]}
         =======================================
         target filename: {has_filename_target}
         pdf:             {is_pdf}
-        doc:             {is_doc}
+        doc/docx:        {is_doc}
         keep:            {is_doc or (is_pdf and has_filename_target)}
         ''')
-        if is_doc or (is_pdf and has_filename_target):
+        if is_doc and has_filename_target:
+            print(f'{f} is doc and has target name')
             continue
-        if os.path.isfile(f):
+        elif is_pdf and has_filename_target:
+            print(f'{f} is pdf and has target name')
+            continue
+        elif os.path.isfile(f):
+            print(f'Removing {f}')
             os.remove(f)
         else:
             rmtree(f)
