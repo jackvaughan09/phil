@@ -18,7 +18,7 @@ from extract_all import extract_all
 
 def get_new_wb_name():
     return date.today().strftime("%B %d, %Y")
-
+ 
 def mv_to_pdf_folder(di,ndi):
     for file in os.listdir(di):
         if 'pdf' in os.path.splitext(file)[1].lower():
@@ -34,5 +34,6 @@ if __name__ == '__main__':
     df = extract_all(data_url)
     if not os.path.exists('../data/xlsx'):
         os.mkdir('../data/xlsx')
+    print('Exporting data to xlsx')
     df.to_excel('../data/xlsx/'+get_new_wb_name()+'.xlsx')
     print('All done!')
