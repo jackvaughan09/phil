@@ -19,7 +19,8 @@ def polish(df,ref=CANON_HEADERS):
     try:
         df = df.applymap(lambda x: str(x).replace('\n',' '))
     except TypeError:
-        print(f"Error occurred, returning empty df.")
+        print(f"Error occurred, returning empty df."
+               "\nData might have been lost.")
         return pd.DataFrame(columns=ref)
     return df
 
@@ -65,23 +66,26 @@ def overflow_repair(df):
     return df
 
 def phil_format(dfs,pdf_url):
+    print('Applying formatting tools to data...', end=' ')
     dfs = [polish(df) for df in dfs]
     dfs = [standardize_columns(df) for df in dfs]
     # dfs = [overflow_repair(df) for df in dfs]
     for df in dfs:
         df['source'] = pdf_url.split('/')[-1]    
+    print('Done!')
     return dfs
 
-def remove_bad_rows(df):
-    df = df.loc[
-        (df['status of implementation'] != 'Status ofImplementation') &
-        (df['management action'] != 'ManagementAction') &
-        (df['recommendations'] != 'Recommendations')
-    ]
-    df = df.loc[
-        (df['observations and recommendations'] != '')&
-        (df['audit observation'] != '') &
-        (df['recommendations'] != '') &
-        (df['status of implementation'] != '')
-    ]
-    return df
+#DEPRECATED
+# def remove_bad_rows(df):
+#     df = df.loc[
+#         (df['status of implementation'] != 'Status ofImplementation') &
+#         (df['management action'] != 'ManagementAction') &
+#         (df['recommendations'] != 'Recommendations')
+#     ]
+#     df = df.loc[
+#         (df['observations and recommendations'] != '')&
+#         (df['audit observation'] != '') &
+#         (df['recommendations'] != '') &
+#         (df['status of implementation'] != '')
+#     ]
+#     return df
