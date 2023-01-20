@@ -46,7 +46,8 @@ cd control
 ```bash
 make setup
 ```
-### Normal Operation: Transferring Audit Data to a Spreadsheet
+### Normal Operation:: Transferring Audit Data to a Spreadsheet
+- Reports download link: https://www.coa.gov.ph/reports/annual-audit-reports/aar-local-government-units/#167-428-leyte
 1. After downloading from the site, drop your .ZIP files in the phil/data/zip folder. Remove any .ZIP files that are unnecessary or that have already been scraped.
 2. Run the following 2 commands in terminal:
 ```bash
