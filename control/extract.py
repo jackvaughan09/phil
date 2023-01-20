@@ -1,9 +1,9 @@
 import tabula.io as tb
 import pandas as pd
-from extracttools import get_pg_rng, polish, fix_overflow, city, year
+from extracttools import get_pg_rng, polish, fix_overflow, city, year, locate_relevant_tables
 from camelot_extract import camelot_extract
 from tabula.errors import CSVParseError
-
+from config import CANON_HEADERS
 
 def extract(pdf_url) -> pd.DataFrame:
     pg_rng = get_pg_rng(pdf_url)
@@ -15,10 +15,11 @@ def extract(pdf_url) -> pd.DataFrame:
             output_format = 'dataframe',
             pages = pg_rng, 
             lattice = True, 
-            multiple_tables = True)
+            multiple_tables = True,
+        )
     except CSVParseError: #TODO Logging errors
         try:
-            return camelot_extract(pdf_url, pg_rng)
+            return camelot_extract(pdf_url)
         except Exception as e: #TODO: Logging 
             print(e) 
             print(
@@ -26,8 +27,9 @@ def extract(pdf_url) -> pd.DataFrame:
             f'but data for {pdf_url} has been lost.')
             return None
 
-    print('Finished reading relevant tables from file')
+    print(f'Finished reading relevant tables from file \n{pdf_url} \nusing {__name__}')
     dfs = [polish(df) for df in dfs]
+    dfs = locate_relevant_tables(dfs, CANON_HEADERS)
     dfs = [dfs[0]]+[fix_overflow(dfs,pg_rng) for df in dfs[1:]] 
     dfs = [year(city(df,pdf_url),pdf_url) for df in dfs]
     print(f'about to concatinate dfs from {pdf_url}')
