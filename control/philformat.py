@@ -3,22 +3,21 @@ This is our main data manipulation module
 slayer of overflow,
 maker of pretty dataframes.
 The functions here are run after all dataframes 
-have been collected from all files in order
+have been collected from a file in order
 to standardize the output for analysis later on.
 
 Author: @jackvaughan09
 """
-
 
 import pandas as pd
 from config import CANON_HEADERS, AUTOCORRECT_DICT, OVERFLOW_TARGET_COLS 
 import code
 
 def polish(df,ref=CANON_HEADERS):
-    df = df.fillna('')
     try:
+        df = df.fillna('')
         df = df.applymap(lambda x: str(x).replace('\n',' '))
-    except TypeError:
+    except Exception:
         print(f"Error occurred, returning empty df."
                "\nData might have been lost.")
         return pd.DataFrame(columns=ref)
@@ -57,7 +56,6 @@ def overflow_repair(df):
             droplist.append(i)
 
     if droplist == []:
-        print('No overflow to fix!')
         return df
     for i in droplist:
         df = df.drop(index=i)
@@ -69,10 +67,9 @@ def phil_format(dfs,pdf_url):
     print('Applying formatting tools to data...', end=' ')
     dfs = [polish(df) for df in dfs]
     dfs = [standardize_columns(df) for df in dfs]
-    # dfs = [overflow_repair(df) for df in dfs]
+    dfs = [overflow_repair(df) for df in dfs]
     for df in dfs:
         df['source'] = pdf_url.split('/')[-1]    
-    print('Done!')
     return dfs
 
 #DEPRECATED

@@ -1,7 +1,6 @@
 import os
 import pandas as pd
 from camelot_extract import camelot_extract
-from philformat import remove_bad_rows
 
 
 def extract_all(pdf_dir) -> pd.DataFrame:

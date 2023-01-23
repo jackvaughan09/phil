@@ -20,7 +20,6 @@ def camelot_extract(pdf_url):
         return
     print(f'Attempting to read tables from: {pdf_url}'
           '\nThis might take a while.')    
-    
     # ensure string typing
     dfs = [df.df.astype(str) for df in camelot.read_pdf(
         filepath = pdf_url,                
@@ -35,6 +34,9 @@ def camelot_extract(pdf_url):
         return pd.DataFrame(columns=CANON_HEADERS)
     print(f'Finished reading {len(dfs)} tables from file {pdf_url}')
     dfs = locate_relevant_camelot_tables(dfs)
+    if type(dfs)==pd.DataFrame:
+        return dfs
+    
     dfs = phil_format(dfs, pdf_url)
     out = pd.concat(dfs).reset_index(drop=True)
     out = overflow_repair(out)

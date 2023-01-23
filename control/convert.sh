@@ -6,7 +6,4 @@ for f in "$1"/*; do
    fi
    echo "Converting: $f"
    unoconv "$f"
- #   name = "${f##*/}"
-  #  echo "$name"
-   # mv "${f%.*}.pdf" ../data/pdf/"$name".pdf
 done
