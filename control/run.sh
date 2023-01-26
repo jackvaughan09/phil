@@ -1,13 +1,4 @@
-#! bin/bash
-source venv/bin/activate
-which python
-which unoconv
-which soffice
-which base
-which pyuno
-pyuno --version
-unoconv --version
-soffice --version
-python clean.py ../data/zip ../data/unzipped
-./convert.sh  ../data/unzipped
-python mksheet.py ../data/unzipped
+#!/usr/bin/bash
+venv/bin/python3 clean.py ../data/zip ../data/pdf
+./convert.sh ../data/pdf
+venv/bin/python3 mksheet.py ../data/pdf

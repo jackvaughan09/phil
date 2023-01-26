@@ -24,9 +24,6 @@ clean:
 	$(RM) *.pyc
 	$(RM_MISC)
 
-test:
-	$(PYTHON) test_extract_all.py
+test: $(PYTHON) test_extract_all.py
 
-run:
-	sh run.sh
-
+run: sh ../phil.sh
