@@ -1,4 +1,4 @@
-#!/usr/bin/bash
+#!/usr/bin/sh
 for f in "$1"/*; do
 	if [ "$(head -c 4 "$f")" = "%PDF" ]; then
 		echo "PDF detected, continuing"
