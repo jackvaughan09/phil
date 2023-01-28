@@ -30,4 +30,4 @@ WORKDIR /app/control
 
 RUN make setup 
 RUN chmod +x run.sh
-RUN ./run.sh
+RUN sh run.sh
