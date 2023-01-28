@@ -5,7 +5,7 @@ Minimize the time requirement of audit report analysis through consolidation, pr
 - https://docs.docker.com/get-docker/
 
 ### 2. Clone phil git repo
-- in Git Bash terminal, run ```git clone www.github.com/hudnash/phil```
+- in Git Bash terminal, run ```git clone https://www.github.com/hudnash/phil.git```
 - if you don't have Git Bash, install it
   - https://git-scm.com/downloads
 
