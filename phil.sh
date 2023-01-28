@@ -1,5 +1,5 @@
 #!/bin/bash
-#creates these folders if they don't just in case.
+#creates these folders if they don't exist just in case.
 if [ ! -d "data/pdf" ]; then
   mkdir -p "data/pdf"
 fi
