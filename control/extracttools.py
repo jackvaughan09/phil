@@ -22,6 +22,8 @@ def get_pg_rng(pdf_url):
             ):
                 out.append(str(i))
                 # camelot starts at page 1 but here it's 0 indexed
+        if len(out) == 0:
+            return "0"
         return ",".join(out) + "-end"
     else:
         return "1-end"
