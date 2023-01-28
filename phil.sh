@@ -5,7 +5,7 @@ if [ ! -d "data/pdf" ]; then
 fi
 
 if [ ! -d "data/zip" ]; then
-  echo "Please create a zip folder in data and add some zip files!"
+  echo "Please create a folder called 'zip' in /data and add some zip files!"
   exit
 fi
 docker build -t phil .
