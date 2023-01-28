@@ -6,3 +6,9 @@ Minimize the time requirement of audit report analysis through consolidation, pr
 
 ### 2. Clone phil git repo
 - in Git Bash terminal, run ```git clone www.github.com/hudnash/phil```
+- if you don't have Git Bash, install it
+  - https://git-scm.com/downloads
+
+### 3. Create a ```data/zip``` folder in your ```phil``` directory
+
+### 4. run ```sh phil.sh``` in Git Bash
