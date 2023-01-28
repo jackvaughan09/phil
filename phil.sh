@@ -10,6 +10,6 @@ if [ ! -d "data/zip" ]; then
 fi
 docker build -t phil .
 docker run --name philapp phil
-docker cp philapp:app/data extracted
+docker cp philapp:app/data/xlsx extracted
 docker container rm -f philapp
 docker image rm -f phil
