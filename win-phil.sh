@@ -8,8 +8,8 @@ if [ ! -d "data/zip" ]; then
   echo "Please create a folder called 'zip' in /data and add some zip files!"
   exit
 fi
-docker build -t phil -f Dockerfile .
-docker run --name philapp phil
+docker build -t phil:win -f win.Dockerfile .
+docker run --name philapp phil:win
 docker cp philapp:app/data/xlsx extracted
 docker container rm -f philapp
-docker image rm -f phil
+docker image rm -f phil:win
