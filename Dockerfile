@@ -1,5 +1,4 @@
 FROM ubuntu:22.04
-
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get -y upgrade && \
@@ -13,9 +12,6 @@ RUN apt-get update && apt-get -y upgrade && \
 RUN  apt-get --no-install-recommends install libreoffice -y
 RUN  apt-get install -y libreoffice-java-common
 
-# Method2 - additionally installing unoconv
-RUN  apt-get install unoconv
-
 ARG CACHEBUST=1
 
 # Create the application directory
@@ -23,11 +19,10 @@ RUN mkdir -p /app
 
 # Copy the application code and files to scrape
 COPY control /app/control
-COPY data /app/data
+
 
 # Set WD
 WORKDIR /app/control
 
 RUN make setup 
 RUN chmod +x run.sh
-RUN sh run.sh
