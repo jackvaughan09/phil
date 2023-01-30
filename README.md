@@ -1,6 +1,8 @@
-# phil
+# **phil:**
 
-## Minimize the time requirement of audit report analysis through consolidation, processing, and indicators
+## *An automated pdf data extraction and cleaning tool*
+
+## **INSTALLATION**
 
 ### For Windows Users
 
@@ -10,21 +12,23 @@
 
    1. Check to see if you have it:
 
-  ```powershell
-  wsl -l -v
+```powershell
+# run this in powershell
+wsl -l -v
 
-  output:
-  NAME        STATE        VERSION
-  something   something       2 
-  ```
+#output
+NAME        STATE        VERSION
+something   something       2 
+```
 
    2. If this is not what you see, then you'll need to either upgrade or install wsl
 
-      - If the wsl command failed, simply run  ```wsl --install```  in administrator powershell and skip the next part
+      - If the wsl command failed, simply run  ```wsl --install```  in administrator powershell
+  
       - If it didn't fail, but you have version 1, you'll need to upgrade.
+        - **Start at step 3:** <https://learn.microsoft.com/en-us/windows/wsl/install-manual#step-4---download-the-linux-kernel-update-package>
 
-   3. Upgrading WSL
-   4.
+## For Everyone
 
 ### 1. Install Docker
 
@@ -33,11 +37,31 @@
 ### 2. Clone phil git repo
 
 - in a Bash terminal, run ```git clone https://www.github.com/hudnash/phil.git```
-- if your system doesn't have native bash, get Git Bash, install it
+- if your system doesn't have bash (Very likely if you're on Windows), get Git Bash, install it
   - <https://git-scm.com/downloads>
 
 ### 3. Create a ```data/zip``` folder in your ```phil``` directory
 
-- add some zip folders from the audit website
+- You can do this easily by running the following command while in the phil directory
 
-### 4. run ```sh phil.sh``` in Bash/Git Bash
+```bash
+mkdir data/zip
+```
+
+### 4. Add some zip files from the audit website to the zip folder, you can find them here
+
+<https://www.coa.gov.ph/reports/annual-audit-reports/aar-local-government-units/#167-428-leyte>
+
+### 5. Run a matching version of phil.sh
+
+- If you have an Intel or AMD processor run
+
+```Bash/GitBash
+sh x64phil.sh
+```
+
+- If you have an Apple Silicon chip or otherwise have an arm64 CPU, run
+
+```Bash
+sh arm64phil.sh
+```
