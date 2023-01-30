@@ -24,7 +24,7 @@ def extract(pdf_url):
             multiple_tables=True,
             copy_text=["v"],
             line_scale=30,
-            pages=get_pg_rng(pdf_url),
+            pages=pg_rng,
         )
     ]
     if len(dfs) < 1:
