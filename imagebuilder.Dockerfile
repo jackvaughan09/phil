@@ -7,9 +7,9 @@
 # it appropriately (jackvaughan/phil:x64) if you plan on pushing
 # docker build -t jackvaughan/phil:x64 -f imagebuilder.Dockerfile .
 
-FROM ubuntu:22.04
+FROM amd64/ubuntu:22.04
+# FROM ubuntu:22.04 
 
-#LABEL org.opencontainers.image.platform=linux/amd64
 ENV DEBIAN_FRONTEND noninteractive
 
 RUN apt-get update && apt-get -y upgrade && \
