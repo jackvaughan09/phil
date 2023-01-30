@@ -17,9 +17,9 @@ def get_pg_rng(pdf_url):
     if pg_count > 100:  # arbitrarily chosen
         for i, pg in enumerate(reader.pages):
             content = pg.extract_text()
-            if len([target for target in TARGET_SENTENCE if target in content]) == len(
-                TARGET_SENTENCE
-            ):
+            if len(
+                [target for target in TARGET_SENTENCE if target in content.lower()]
+            ) == len(TARGET_SENTENCE):
                 out.append(str(i))
                 # camelot starts at page 1 but here it's 0 indexed
         if len(out) == 0:
@@ -46,7 +46,7 @@ def good_match(og: str, ref: list[str]):
 def locate_relevant_tables(dfs):
     print("Attempting to locate relevant tables...")
     out = []
-    counter = 0
+    removal_counter = 0
     for i, df in enumerate(dfs):
         # camelot shoves the column headers into the first row of the df
         # clean and store values
@@ -56,7 +56,7 @@ def locate_relevant_tables(dfs):
         # if no, remove df from dfs
         try:
             if len(set(CANON_HEADERS).intersection(set(columns))) <= 2:
-                counter += 1
+                removal_counter += 1
                 continue
         except Exception as e:
             print(f"Error: {e}")
@@ -70,5 +70,5 @@ def locate_relevant_tables(dfs):
         print("No relevant tables found.")
         return pd.DataFrame(columns=CANON_HEADERS)
 
-    print(f"Collected {len(out)} tables!\n" f"Removed {counter}")
+    print(f"Collected {len(out)} tables!\n" f"Removed {removal_counter}")
     return out
