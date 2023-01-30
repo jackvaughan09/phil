@@ -30,11 +30,9 @@ RUN mkdir -p /app
 
 # Copy the application code and files to scrape
 COPY control /app/control
-# COPY data /app/data
 
 # Set WD
 WORKDIR /app/control
 
 RUN make setup 
 RUN chmod +x run.sh
-# RUN sh run.sh
