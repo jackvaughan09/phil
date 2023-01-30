@@ -12,7 +12,6 @@ TARGET_SENTENCE = [
     "status",
     "implementation",
     "prior",
-    "year",
     "audit",
     "recommendations",
 ]
