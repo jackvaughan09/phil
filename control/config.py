@@ -28,6 +28,7 @@ AUTOCORRECT_DICT = {
     "ref": "references",
     ".Ref": "references",
     "ref.": "references",
+    "refer-ence": "references",
 }  # TODO: regex matching when checking this, saves entries
 FILENAME_TARGET = ["Status", "Audit"]
 BULLET_STRS = [
