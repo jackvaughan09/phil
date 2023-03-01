@@ -14,7 +14,7 @@ def get_pg_rng(pdf_url):
     out = []
     reader = p.PdfReader(pdf_url)
     pg_count = len(reader.pages)
-    if pg_count > 100:  # arbitrarily chosen
+    if pg_count < 100:  # arbitrarily chosen
         for i, pg in enumerate(reader.pages):
             content = pg.extract_text()
             if len(
