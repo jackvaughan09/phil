@@ -1,6 +1,8 @@
-# **phil:**
+# **phil**
 
-## *An automated pdf data extraction and cleaning tool*
+## *A rule-based automated pdf data extraction and cleaning tool*
+
+---
 
 ## **INSTALLATION**
 
@@ -14,7 +16,7 @@
 
 ```powershell
 # run this in powershell
-wsl -l -v
+wsl -l -v 
 
 #output
 NAME        STATE        VERSION
@@ -36,7 +38,8 @@ something   something       2
 
 ### 2. Clone phil git repo
 
-- in a Bash terminal, run ```git clone https://www.github.com/hudnash/phil.git```
+- in Git Bash (Windows) or your system terminal, run:
+  > ```git clone https://www.github.com/hudnash/phil.git```
 - if your system doesn't have bash (Very likely if you're on Windows), get Git Bash, install it
   - <https://git-scm.com/downloads>
 
@@ -48,9 +51,10 @@ something   something       2
 mkdir data/zip
 ```
 
-### 4. Add some zip files from the audit website to the zip folder, you can find them here
+### 4. Add some zip files from the audit website to the 'zip' folder, you can find them here
 
-<https://www.coa.gov.ph/reports/annual-audit-reports/aar-local-government-units/#167-428-leyte>
+[Phillipines Audit Website](
+<https://www.coa.gov.ph/reports/annual-audit-reports/aar-local-government-units/#167-428-leyte>)
 
 ### 5. Run a matching version of phil.sh
 
