@@ -1,6 +1,6 @@
 # **phil**
 
-## *A rule-based automated pdf data extraction and cleaning tool*
+> A dockerized environment, document convervsion system, and automated scraping tool for extracting policy audit text data from .doc/.docx & .pdf files 
 
 ## **INSTALLATION**
 
