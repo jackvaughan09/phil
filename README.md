@@ -2,8 +2,6 @@
 
 ## *A rule-based automated pdf data extraction and cleaning tool*
 
----
-
 ## **INSTALLATION**
 
 ### For Windows Users
