@@ -14,7 +14,8 @@ from extract_all import extract_all
 
 
 def get_new_wb_name():
-    return date.today().strftime("%B %d, %Y")
+    return "a"
+    # return date.today().strftime("%B %d, %Y")
 
 
 def mv_to_pdf_folder(di, ndi):

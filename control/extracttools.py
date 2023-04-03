@@ -6,27 +6,8 @@ Author: @jackvaughan09 + @hudnash
 
 import pandas as pd
 import PyPDF2 as p
-from config import CANON_HEADERS, TARGET_SENTENCE
+from config import CANON_HEADERS
 from fuzzywuzzy import fuzz
-
-
-def get_pg_rng(pdf_url):
-    out = []
-    reader = p.PdfReader(pdf_url)
-    pg_count = len(reader.pages)
-    if pg_count < 100:  # arbitrarily chosen
-        for i, pg in enumerate(reader.pages):
-            content = pg.extract_text()
-            if len(
-                [target for target in TARGET_SENTENCE if target in content.lower()]
-            ) == len(TARGET_SENTENCE):
-                out.append(str(i))
-                # camelot starts at page 1 but here it's 0 indexed
-        if len(out) == 0:
-            return "0"
-        return ",".join(out) + "-end"
-    else:
-        return "1-end"
 
 
 def good_match(og: str, ref: list[str]):
@@ -43,32 +24,70 @@ def good_match(og: str, ref: list[str]):
     return good
 
 
-def locate_relevant_tables(dfs):
-    print("Attempting to locate relevant tables...")
+def find_part3_rng(pdf_url):
+
+    reader = p.PdfReader(pdf_url)
+    contains_piii = []
+    contains_pv = []
+
+    for i, pg in enumerate(reader.pages):
+        content = pg.extract_text().lower()
+        if "part iii" in content:
+            contains_piii.append(str(i))
+        if "part iv" in content:
+            contains_pv.append(str(i))
+
+    if len(contains_piii) == 0 or len(contains_pv) == 0:
+        return "0"
+
+    pg_range = "-".join([contains_piii[-1], contains_pv[-1]])
+    return pg_range
+
+
+def header_match_tables(dfs: list[pd.DataFrame]):
+    global match
+    print("Assigning canon headers to all dataframes...")
     out = []
-    removal_counter = 0
     for i, df in enumerate(dfs):
-        # camelot shoves the column headers into the first row of the df
-        # clean and store values
-        columns = df.iloc[0].apply(lambda x: x.replace("\n", ""))
-        columns = [good_match(col, CANON_HEADERS) for col in columns]
-        # fuzzy logic check if column names match target headers
-        # if no, remove df from dfs
-        try:
-            if len(set(CANON_HEADERS).intersection(set(columns))) <= 2:
-                removal_counter += 1
+        #####################
+        # Header Detection
+        # if there are headers for a particular table,
+        # camelot has shoved them into the first row of the df.
+
+        # clean and store values of first row
+        first_row = df.iloc[0].apply(lambda x: x.replace("\n", ""))
+
+        # try to match each entry in first row to a header in CANON_HEADERS
+        # if it can't find a match for a particular entry, returns the original value
+        match_attempt = [good_match(val, CANON_HEADERS) for val in first_row]
+
+        # ---------------------------------------------------------------
+        # inferred rule learned from research:
+        # if there are less than 2 matches, then the first row is not a header row.
+        # ---------------------------------------------------------------
+
+        # check if first row values match target headers
+        if len(set(CANON_HEADERS).intersection(set(match_attempt))) > 2:
+            # if yes, set the global match to the match_attempt
+            match = match_attempt
+
+            # set df columns to match, filter out first row, and append to out
+            df.columns = match
+            df = df.iloc[1:]
+            out.append(df.astype(str))
+        else:
+            # if no, then set the df columns to the global match
+            try:
+                df.columns = (
+                    match  # <-- assumes that match is defined by a previous iteration
+                )
+                #   which is not always the case. TODO: prevent this data loss.
+            except Exception as e:
+                print(
+                    f"The match value {match_attempt} is incongruent with\n\
+                    the dataframe size."
+                )
                 continue
-        except Exception as e:
-            print(f"Error: {e}")
-
-        # if yes, then make the first row the headers of the new df
-        df.columns = columns
-        df = df.iloc[1:]
-        out.append(df.astype(str))
-
-    if len(out) < 1:
-        print("No relevant tables found.")
-        return pd.DataFrame(columns=CANON_HEADERS)
-
-    print(f"Collected {len(out)} tables!\n" f"Removed {removal_counter}")
+            out.append(df.astype(str))
+    print("Done!")
     return out
